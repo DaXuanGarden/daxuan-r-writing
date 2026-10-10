@@ -9,6 +9,7 @@ required_files=(
   "$ROOT/manifest.json"
   "$ROOT/evals/trigger_cases.json"
   "$ROOT/references/script-template.md"
+  "$ROOT/references/skill-routing.md"
   "$ROOT/examples/join-check/run_example.R"
 )
 
@@ -18,6 +19,28 @@ done
 
 python3 -m json.tool "$ROOT/manifest.json" >/dev/null
 python3 -m json.tool "$ROOT/evals/trigger_cases.json" >/dev/null
+
+python3 - "$ROOT/manifest.json" "$ROOT/references/skill-routing.md" "$ROOT/SKILL.md" "$ROOT/README.md" <<'PY'
+import json
+import sys
+from pathlib import Path
+
+manifest_path, routing_path, skill_path, readme_path = map(Path, sys.argv[1:])
+manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+skills = manifest.get("integrated_skills")
+assert isinstance(skills, list) and skills, "integrated_skills must be a non-empty list"
+names = [item.get("name") for item in skills]
+assert len(names) == len(set(names)), "integrated skill names must be unique"
+for item in skills:
+    assert all(item.get(key) for key in ("name", "source", "path", "purpose")), item
+
+routing = routing_path.read_text(encoding="utf-8")
+missing = [name for name in names if f"`{name}`" not in routing]
+assert not missing, f"routing document is missing: {missing}"
+assert "路由外部 R skills" in skill_path.read_text(encoding="utf-8")
+assert "Skill 路由" in readme_path.read_text(encoding="utf-8")
+print(f"PASS: {len(names)} integrated skill routes and documentation checks")
+PY
 
 if ! command -v Rscript >/dev/null 2>&1; then
   echo "FAIL: Rscript is required to run the reproducible example" >&2

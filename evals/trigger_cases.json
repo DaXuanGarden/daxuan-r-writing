@@ -7,17 +7,18 @@
   ],
   "positive_concepts": {
     "r_artifact": ["R脚本", "R代码", "R 脚本", "R 代码", "R script"],
-    "action": ["编写", "修复", "改进", "整理", "运行", "检查", "排查", "分析", "清理"],
-    "data_work": ["数据处理", "字段提取", "数据清洗", "合并", "队列构建", "统计分析", "基线特征", "回归分析", "结果整理"],
+    "action": ["编写", "修复", "改进", "整理", "运行", "检查", "排查", "分析", "清理", "审计", "迁移", "生成", "保存", "修改"],
+    "data_work": ["数据处理", "字段提取", "数据清洗", "合并", "队列构建", "统计分析", "基线特征", "回归分析", "结果整理", "GWAS", "omics", "SNP", "LDSC", "MR", "绘图数据", "论文图形"],
     "clinical_data": ["MIMIC", "eICU", "临床数据库"],
-    "clarity": ["注释", "核对", "说明", "假设"]
+    "clarity": ["注释", "核对", "说明", "假设"],
+    "routing": ["路由", "skill", "安装", "调用"],
+    "gwas_omics": ["GWAS", "omics", "SNP", "LDSC", "MR"],
+    "plotting": ["绘图", "ggplot2", "出版级", "图形"]
   },
   "negative_patterns": [
     "只问统计概念",
     "只问研究设计",
     "纯概念解释，不写代码",
-    "不涉及数据处理的单纯发表级绘图",
-    "只要发表级生存曲线图",
     "不涉及其他数据处理或分析",
     "不需要实现 R 代码"
   ],
@@ -45,6 +46,22 @@
     {
       "text": "请直接写 Cox 回归分析的 R 代码，使用当前队列并保存 HR 结果。",
       "family": "analysis_code_without_tutorial_request"
+    },
+    {
+      "text": "用 R 审计这个 GWAS 结果文件的缺失、重复和 SNP 连接，并保存清洗报告。",
+      "family": "gwas_input_audit_routing"
+    },
+    {
+      "text": "用 R 整理 LDSC 和 MR 结果，统一列名和长宽结构，再生成可复用的绘图数据。",
+      "family": "omics_result_wrangling_routing"
+    },
+    {
+      "text": "请用 R 按出版要求修改这张 ggplot2 图，检查中文字体、标签、配色和导出尺寸。",
+      "family": "publication_figure_routing"
+    },
+    {
+      "text": "把这段旧 R 代码迁移到现代 tidyverse，保留连接关系和行数核对。",
+      "family": "modern_r_refactor_routing"
     }
   ],
   "should_not_trigger": [
@@ -57,8 +74,8 @@
       "family": "study_design_only"
     },
     {
-      "text": "只要发表级生存曲线图，不涉及其他数据处理或分析。",
-      "family": "figure_only"
+      "text": "只解释生存分析中的删失概念，不需要 R 代码。",
+      "family": "survival_concept_only"
     }
   ],
   "near_neighbor": [

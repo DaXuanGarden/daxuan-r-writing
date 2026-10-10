@@ -1,6 +1,6 @@
 {
   "name": "daxuan-r-writing",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "owner": "Daxuan",
   "updated_at": "2026-10-10",
   "status": "public",
@@ -22,6 +22,21 @@
     "trigger boundary cases",
     "local package validation",
     "reproducible synthetic example",
-    "public README install path"
+    "public README install path",
+    "external skill routing manifest"
+  ],
+  "integrated_skills": [
+    {"name": "data-cleaning", "source": "zhjx19/data-cleaning", "path": ".", "purpose": "audit and clean inputs"},
+    {"name": "data-wrangling", "source": "zhjx19/data-wrangling", "path": ".", "purpose": "reshape and aggregate tables"},
+    {"name": "tidy-r", "source": "statzhero/tidy-r-skill", "path": ".", "purpose": "modern tidyverse API choices"},
+    {"name": "tidyverse-patterns", "source": "ab604/claude-code-r-skills", "path": ".claude/skills/tidyverse-patterns", "purpose": "R 4.3+ tidyverse patterns"},
+    {"name": "rlang-patterns", "source": "ab604/claude-code-r-skills", "path": ".claude/skills/rlang-patterns", "purpose": "tidy evaluation and dynamic columns"},
+    {"name": "ggplot2-pub", "source": "zhjx19/ggplot2-pub", "path": ".", "purpose": "publication-ready ggplot2"},
+    {"name": "r-performance", "source": "ab604/claude-code-r-skills", "path": ".claude/skills/r-performance", "purpose": "profiling and benchmarking"},
+    {"name": "r-style-guide", "source": "ab604/claude-code-r-skills", "path": ".claude/skills/r-style-guide", "purpose": "readable R style"},
+    {"name": "tdd-workflow", "source": "ab604/claude-code-r-skills", "path": ".claude/skills/tdd-workflow", "purpose": "test-first R changes"},
+    {"name": "r-package-development", "source": "ab604/claude-code-r-skills", "path": ".claude/skills/r-package-development", "purpose": "R package structure and APIs"},
+    {"name": "r-oop", "source": "ab604/claude-code-r-skills", "path": ".claude/skills/r-oop", "purpose": "R object design"},
+    {"name": "r-bayes", "source": "ab604/claude-code-r-skills", "path": ".claude/skills/r-bayes", "purpose": "Bayesian modeling workflows"}
   ]
 }

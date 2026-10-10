@@ -10,9 +10,9 @@
 [![skills.sh](https://skills.sh/b/DaXuanGarden/daxuan-r-writing)](https://skills.sh/DaXuanGarden/daxuan-r-writing)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-**把真实数据任务变成可运行、可核对、不会悄悄放大行数的 R 交付物。**
+**把真实数据任务变成可运行、可核对、不会悄悄放大行数的 R 交付物，并在需要时路由到合适的 R skill。**
 
-[看效果](#效果示例) · [安装](#快速开始) · [触发方式](#触发方式) · [安全边界](#安全边界) · [验证](#verification)
+[看效果](#效果示例) · [安装](#快速开始) · [Skill 路由](#skill-路由) · [触发方式](#触发方式) · [安全边界](#安全边界) · [验证](#verification)
 
 </div>
 
@@ -22,7 +22,7 @@
 
 ## 适用任务
 
-- 从 MIMIC/eICU 等数据库提取字段、整理时间和连接表。
+- 从 MIMIC/eICU 等数据库或 GWAS/omics 结果中提取字段、整理时间和连接表。
 - 构建分析队列、处理诊断/用药记录、生成基线表或回归结果。
 - 排查脚本报错、行数变化、重复主键或输出不符合预期。
 - 整理已有 R 代码，使其直接、可运行、方便审核。
@@ -58,11 +58,27 @@ npx skills add DaXuanGarden/daxuan-r-writing
 用 daxuan-r-writing 检查这个 R 合并流程：先确认每张表的一行代表什么和连接键，再修复重复 stay，并运行针对性的行数核对。
 ```
 
+## Skill 路由
+
+本项目的“集成”指路由、按需安装和调用外部 skill，不把外部仓库的功能、代码、规则或依赖复制进本 skill。完整清单和精确安装模板见 [references/skill-routing.md](references/skill-routing.md)。运行时只有在对应目录存在目标 `SKILL.md` 时，才会报告该 skill 已安装。
+
+常用路由包括：
+
+- `data-cleaning`：输入审计、缺失/重复/编码检查和连接前质量记录。
+- `data-wrangling`：宽长转换、分组、批量化、累计和滑窗整理。
+- `tidy-r`、`tidyverse-patterns`、`rlang-patterns`：现代 tidyverse、动态列名和 tidy evaluation。
+- `ggplot2-pub`：出版级 ggplot2、中文导出、标签、配色和多面板图形。
+- `r-performance`、`r-style-guide`、`tdd-workflow`、`r-package-development`、`r-oop`、`r-bayes`：只在性能、风格、测试、包、对象或贝叶斯模型任务明确需要时调用。
+
+对当前 GWAS/omics 项目，一个典型组合是：先用 `data-cleaning` 审计输入和 SNP 连接，再用 `data-wrangling` 整理 LDSC/MR/富集结果，最后用 `ggplot2-pub` 生成并验收论文图；原有阈值、方法和输出格式仍以项目定义为准。
+
 ## 你可以直接这样说
 
 - “帮我从 MIMIC 提取心衰诊断，整理成每个 ICU stay 一行并保存结果。”
 - “修复 eICU 的连接代码，检查为什么行数变多。”
 - “用 R 完成这个队列的描述性分析，并说明输出表代表什么。”
+- “审计 GWAS 结果的缺失、重复和 SNP 连接，再整理成可画图的数据。”
+- “按出版要求修改这张 ggplot2 图，检查中文字体、标签和导出尺寸。”
 
 ## 本地使用
 
@@ -94,8 +110,10 @@ npx skills add DaXuanGarden/daxuan-r-writing
 - “把诊断明细按研究定义汇总后并回主表。”
 - “用 R 完成这个队列的基线特征和回归分析，并保存结果表。”
 - “运行并检查这个 R 数据处理脚本，说明它读取什么、输出什么。”
+- “审计 GWAS 结果的缺失、重复和 SNP 连接，并保存清洗报告。”
+- “按出版要求修改这张 ggplot2 图，检查中文字体、标签、配色和导出尺寸。”
 
-只问统计概念、研究设计，或只要不涉及数据处理的发表级图形时，不应触发。
+只问统计概念或研究设计、且没有 R 产物时不应触发；纯 R 绘图可以触发，但会路由到 `ggplot2-pub`，不会强行执行队列分析。
 
 ## 安全边界
 
@@ -103,6 +121,7 @@ npx skills add DaXuanGarden/daxuan-r-writing
 - 不把候选 ICD 前缀、药物名称或研究定义说成已经验证的标准定义。
 - 不把未运行的代码说成已验证；缺少会改变研究对象、暴露/结局时间或连接结果的信息时会停下来询问。
 - 只运行当前任务涉及的脚本和检查，不顺手启动无关流程。
+- 不声称外部 skill 已安装、已调用或已复制，除非实际检查到目标 `SKILL.md` 并说明调用范围；安装失败时明确回退到本 skill 的流程。
 
 ## 文件结构
 
@@ -110,6 +129,7 @@ npx skills add DaXuanGarden/daxuan-r-writing
 SKILL.md                         Agent 工作流、边界与检查点
 agents/interface.yaml            跨 runtime 的调用接口和权限边界
 references/script-template.md    独立 R 脚本骨架
+references/skill-routing.md      外部 R skill 路由、来源和安装模板
 examples/join-check/             不含临床数据的可复现合成回放
 scripts/check_skill.sh           本地结构、JSON 和示例检查
 evals/trigger_cases.json         正向、负向和近邻触发样例
@@ -124,7 +144,7 @@ LUBAN_REPORT.md                  本轮审计、评分和回炉清单
 ./scripts/check_skill.sh
 ```
 
-合格表现：JSON 校验通过，示例脚本退出码为 0，输出行数等于输入 stay 数，且 `stay_id` 不重复。
+合格表现：JSON 校验和路由清单检查通过，示例脚本退出码为 0，输出行数等于输入 stay 数，且 `stay_id` 不重复。
 
 Upstream inspiration: `qiaomu-meta-skill; auto-inspire-statsvisual-skill; github/awesome-copilot`. Details are recorded in the [acknowledgements](#致谢); local references are named there without implying a public upstream repository.
 
