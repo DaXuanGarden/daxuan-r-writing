@@ -1,0 +1,74 @@
+{
+  "recommended_threshold": 0.34,
+  "description_required_concepts": [
+    "r_artifact",
+    "action",
+    "data_work"
+  ],
+  "positive_concepts": {
+    "r_artifact": ["R脚本", "R代码", "R 脚本", "R 代码", "R script"],
+    "action": ["编写", "修复", "改进", "整理", "运行", "检查", "排查", "分析", "清理"],
+    "data_work": ["数据处理", "字段提取", "数据清洗", "合并", "队列构建", "统计分析", "基线特征", "回归分析", "结果整理"],
+    "clinical_data": ["MIMIC", "eICU", "临床数据库"],
+    "clarity": ["注释", "核对", "说明", "假设"]
+  },
+  "negative_patterns": [
+    "只问统计概念",
+    "只问研究设计",
+    "纯概念解释，不写代码",
+    "不涉及数据处理的单纯发表级绘图",
+    "只要发表级生存曲线图",
+    "不涉及其他数据处理或分析",
+    "不需要实现 R 代码"
+  ],
+  "should_trigger": [
+    {
+      "text": "帮我写 R 代码，从 MIMIC 提取心衰诊断并整理成每个 ICU stay 一行。",
+      "family": "mimic_extraction_and_aggregation"
+    },
+    {
+      "text": "修复这个 eICU 合并流程，核对连接键，避免主表行数被重复放大。",
+      "family": "eicu_join_debugging"
+    },
+    {
+      "text": "用 R 代码清理队列并完成基线特征和回归分析，保存结果表。",
+      "family": "cohort_analysis_implementation"
+    },
+    {
+      "text": "帮我运行并检查这个 R 数据处理脚本，说明它读取什么、输出什么。",
+      "family": "run_and_verify_r_workflow"
+    },
+    {
+      "text": "整理这段 R 代码，减少重复步骤，但保留每一步关键逻辑的注释。",
+      "family": "readable_code_refactor"
+    },
+    {
+      "text": "请直接写 Cox 回归分析的 R 代码，使用当前队列并保存 HR 结果。",
+      "family": "analysis_code_without_tutorial_request"
+    }
+  ],
+  "should_not_trigger": [
+    {
+      "text": "只解释混杂因素是什么，不需要 R 代码。",
+      "family": "statistics_concept_only"
+    },
+    {
+      "text": "讨论袢利尿剂研究的目标试验设计，不写数据分析代码。",
+      "family": "study_design_only"
+    },
+    {
+      "text": "只要发表级生存曲线图，不涉及其他数据处理或分析。",
+      "family": "figure_only"
+    }
+  ],
+  "near_neighbor": [
+    {
+      "text": "帮我解释 R 中 merge 函数的 by 参数是什么意思，不需要修改项目代码。",
+      "family": "r_concept_question"
+    },
+    {
+      "text": "帮我设计一个统计分析方案，先不需要实现 R 代码。",
+      "family": "analysis_plan_without_code"
+    }
+  ]
+}

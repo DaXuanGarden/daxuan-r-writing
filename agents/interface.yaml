@@ -1,0 +1,37 @@
+interface:
+  display_name: "Daxuan R writing"
+  short_description: "完成可读、可核对的数据分析 R 代码"
+  default_prompt: >-
+    Use daxuan-r-writing to implement, repair, refactor, or run R code for real data-processing and analysis tasks. Inspect the actual files and columns first; preserve raw inputs; state the row grain, keys, and important time or study-definition assumptions. Keep scripts direct, add concise comments for meaningful steps, and run only relevant checks within the requested task. Explain what was done and what was actually verified without turning the work into a beginner lesson. Honor the user's standalone-script preference for rm(list = ls()), gc(), and an explicit setwd().
+  examples:
+    - "帮我写 R 代码，从 MIMIC 提取心衰诊断并整理成每个 ICU stay 一行。"
+    - "修复这个 eICU 合并流程，避免诊断明细把主表行数重复放大。"
+    - "用 R 完成这个队列的基线特征和回归分析，并说明输出如何核对。"
+compatibility:
+  canonical_format: "agent-skills"
+  adapter_targets:
+    - "openai"
+    - "claude"
+    - "generic"
+    - "agent-skills-compatible"
+  activation:
+    mode: "manual"
+    paths: []
+  execution:
+    context: "inline"
+    shell: "bash"
+  trust:
+    source_tier: "local"
+    remote_inline_execution: "forbid"
+    remote_metadata_policy: "read-only references only; do not upload clinical data"
+    generated_public_claims: "evidence-bound"
+  permissions:
+    network: "not needed for routine local R analysis"
+    file_write: "requested scripts and derived outputs only; raw inputs remain read-only"
+    subprocess: "run R code and relevant checks when they are part of the requested task"
+    interactive: "ask only when a missing study or data definition changes the result"
+  degradation:
+    openai: "metadata-adapter"
+    claude: "neutral-source-plus-adapter"
+    generic: "neutral-source"
+    agent-skills-compatible: "canonical-source"

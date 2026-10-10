@@ -1,0 +1,25 @@
+{
+  "name": "daxuan-r-writing",
+  "version": "0.2.0",
+  "owner": "Daxuan",
+  "updated_at": "2026-09-26",
+  "status": "local",
+  "maturity_tier": "scaffold",
+  "lifecycle_stage": "personal",
+  "context_budget_tier": "scaffold",
+  "review_cadence": "when the user's R workflow or preferences change",
+  "upstream_inspiration": "qiaomu-meta-skill; auto-inspire-statsvisual-skill; github/awesome-copilot comment-code-generate-a-tutorial",
+  "target_platforms": [
+    "openai",
+    "claude",
+    "generic",
+    "agent-skills-compatible"
+  ],
+  "release_gates": [
+    "valid skill frontmatter",
+    "clear code-first purpose and routing",
+    "readable R script template",
+    "trigger boundary cases",
+    "local package validation"
+  ]
+}
