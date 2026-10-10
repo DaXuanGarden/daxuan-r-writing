@@ -13,6 +13,9 @@
     "clarity": ["注释", "核对", "说明", "假设"],
     "routing": ["路由", "skill", "安装", "调用"],
     "gwas_omics": ["GWAS", "omics", "SNP", "LDSC", "MR"],
+    "single_cell": ["单细胞", "Seurat", "SingleCellExperiment", "细胞"],
+    "bulk_spatial": ["转录组", "蛋白组", "代谢组", "空间组学", "多组学"],
+    "reference_code": ["参考代码", "脚本模板", "notebook", "适配", "改写"],
     "plotting": ["绘图", "ggplot2", "出版级", "图形"]
   },
   "negative_patterns": [
@@ -62,6 +65,22 @@
     {
       "text": "把这段旧 R 代码迁移到现代 tidyverse，保留连接关系和行数核对。",
       "family": "modern_r_refactor_routing"
+    },
+    {
+      "text": "参考这段 Seurat R 代码，按当前样本元数据改写单细胞质控和降维流程，并检查细胞 ID 是否对齐。",
+      "family": "single_cell_reference_adaptation"
+    },
+    {
+      "text": "根据这个蛋白组分析脚本，保留输入输出和检查逻辑，改成当前项目可运行的 R 脚本。",
+      "family": "bulk_omics_reference_adaptation"
+    },
+    {
+      "text": "用 R 检查空间组学对象的 spot、样本和特征 ID，再整理成可复用的绘图数据。",
+      "family": "spatial_object_validation"
+    },
+    {
+      "text": "读取这个多组学 notebook，提取包版本和关键参数，改写成当前项目的最小 R 工作流。",
+      "family": "multiomics_notebook_adaptation"
     }
   ],
   "should_not_trigger": [
@@ -76,6 +95,10 @@
     {
       "text": "只解释生存分析中的删失概念，不需要 R 代码。",
       "family": "survival_concept_only"
+    },
+    {
+      "text": "解释 Seurat 聚类和 UMAP 的概念，不需要写 R 代码。",
+      "family": "single_cell_concept_only"
     }
   ],
   "near_neighbor": [

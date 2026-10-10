@@ -1,6 +1,6 @@
 {
   "name": "daxuan-r-writing",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "owner": "Daxuan",
   "updated_at": "2026-10-10",
   "status": "public",
@@ -23,7 +23,15 @@
     "local package validation",
     "reproducible synthetic example",
     "public README install path",
-    "external skill routing manifest"
+    "external skill routing manifest",
+    "data-domain and reference-code adaptation guidance"
+  ],
+  "supported_data_domains": [
+    "clinical tables and event data",
+    "GWAS and genetic summary statistics",
+    "bulk transcriptomics, proteomics, and metabolomics",
+    "single-cell and spatial omics",
+    "multi-omics and project-defined biomedical data"
   ],
   "integrated_skills": [
     {"name": "data-cleaning", "source": "zhjx19/data-cleaning", "path": ".", "purpose": "audit and clean inputs"},

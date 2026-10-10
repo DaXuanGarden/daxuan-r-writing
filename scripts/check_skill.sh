@@ -29,6 +29,8 @@ manifest_path, routing_path, skill_path, readme_path = map(Path, sys.argv[1:])
 manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
 skills = manifest.get("integrated_skills")
 assert isinstance(skills, list) and skills, "integrated_skills must be a non-empty list"
+domains = manifest.get("supported_data_domains")
+assert isinstance(domains, list) and len(domains) >= 5, "supported_data_domains must cover multiple domains"
 names = [item.get("name") for item in skills]
 assert len(names) == len(set(names)), "integrated skill names must be unique"
 for item in skills:
@@ -37,9 +39,12 @@ for item in skills:
 routing = routing_path.read_text(encoding="utf-8")
 missing = [name for name in names if f"`{name}`" not in routing]
 assert not missing, f"routing document is missing: {missing}"
-assert "路由外部 R skills" in skill_path.read_text(encoding="utf-8")
+skill = skill_path.read_text(encoding="utf-8")
+assert "路由外部 R skills" in skill
+assert "数据域与参考代码学习" in skill
+assert "参考代码" in routing and "数据域适配" in routing
 assert "Skill 路由" in readme_path.read_text(encoding="utf-8")
-print(f"PASS: {len(names)} integrated skill routes and documentation checks")
+print(f"PASS: {len(names)} integrated skill routes, {len(domains)} data domains, and documentation checks")
 PY
 
 if ! command -v Rscript >/dev/null 2>&1; then
