@@ -1,14 +1,14 @@
 {
   "name": "daxuan-r-writing",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "owner": "Daxuan",
-  "updated_at": "2026-09-26",
-  "status": "local",
-  "maturity_tier": "scaffold",
-  "lifecycle_stage": "personal",
-  "context_budget_tier": "scaffold",
+  "updated_at": "2026-10-10",
+  "status": "public",
+  "maturity_tier": "validated-example",
+  "lifecycle_stage": "public",
+  "context_budget_tier": "compact",
   "review_cadence": "when the user's R workflow or preferences change",
-  "upstream_inspiration": "qiaomu-meta-skill; auto-inspire-statsvisual-skill; github/awesome-copilot comment-code-generate-a-tutorial",
+  "upstream_inspiration": "qiaomu-meta-skill; auto-inspire-statsvisual-skill; github/awesome-copilot",
   "target_platforms": [
     "openai",
     "claude",
@@ -20,6 +20,8 @@
     "clear code-first purpose and routing",
     "readable R script template",
     "trigger boundary cases",
-    "local package validation"
+    "local package validation",
+    "reproducible synthetic example",
+    "public README install path"
   ]
 }

@@ -1,0 +1,13 @@
+{
+  "name": "daxuan-skills",
+  "owner": {
+    "name": "Daxuan"
+  },
+  "plugins": [
+    {
+      "name": "daxuan-r-writing",
+      "source": "./",
+      "description": "Write, repair, and verify auditable R data-processing workflows."
+    }
+  ]
+}
