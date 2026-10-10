@@ -40,10 +40,10 @@ routing = routing_path.read_text(encoding="utf-8")
 missing = [name for name in names if f"`{name}`" not in routing]
 assert not missing, f"routing document is missing: {missing}"
 skill = skill_path.read_text(encoding="utf-8")
-assert "路由外部 R skills" in skill
-assert "数据域与参考代码学习" in skill
+assert "外部助手怎么参与" in skill
+assert "参考材料怎样变成新代码" in skill
 assert "参考代码" in routing and "数据域适配" in routing
-assert "Skill 路由" in readme_path.read_text(encoding="utf-8")
+assert "外部助手" in readme_path.read_text(encoding="utf-8")
 print(f"PASS: {len(names)} integrated skill routes, {len(domains)} data domains, and documentation checks")
 PY
 

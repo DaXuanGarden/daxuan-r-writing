@@ -1,14 +1,15 @@
 # Daxuan R writing
 
-> Turn real data tasks into runnable, auditable R code without silently multiplying rows.
+> Turn reference R code into code that belongs in the current project.
 
-This Agent Skill routes the writing, repair, organization, and execution of R code for clinical, GWAS, bulk omics, single-cell, spatial, multi-omics, and other biomedical data work. It inspects actual files, columns, object classes, and matrix orientation; keeps raw inputs read-only; and reports what was really checked.
+`daxuan-r-writing` is an R implementation layer for clinical data, GWAS, bulk omics, single-cell, spatial omics, multi-omics, and other user-provided R workflows. It starts from the files, objects, scripts, and goals in front of it instead of assuming one analysis framework.
 
-## Routing
+## What makes it ours
 
-“Integration” means that `daxuan-r-writing` can detect, install when clearly needed, and call a companion skill. It does not vendor that repository's code, rules, or dependencies. The routing table, data-domain checks, and exact install templates are in [references/skill-routing.md](references/skill-routing.md). Common routes include `data-cleaning`, `data-wrangling`, `tidyverse-patterns`, `rlang-patterns`, and `ggplot2-pub`; domain definitions and verification remain project-specific.
-
-When a user provides a script, function, notebook, or analysis template, the skill first extracts its inputs, outputs, package versions, object classes, matrix orientation, parameters, and checks. It then adapts the smallest runnable part to the current project instead of copying unverified thresholds or biological assumptions.
+- It learns from the user's scripts, functions, notebooks, examples, and error messages.
+- It protects the meaning of tables, matrices, sparse matrices, and R objects before changing code.
+- It keeps reusable code separate from unconfirmed thresholds, labels, and scientific assumptions.
+- It produces code together with the inputs, outputs, assumptions, and checks that explain the change.
 
 ## Install
 
@@ -16,16 +17,32 @@ When a user provides a script, function, notebook, or analysis template, the ski
 npx skills add DaXuanGarden/daxuan-r-writing
 ```
 
-After installation, ask:
+Then ask:
 
 ```text
-Use daxuan-r-writing to inspect this R join: identify each table's row grain and key, prevent duplicated stays, and run focused row-count checks.
+Read the R scripts and inputs in this project, identify the objects and key IDs,
+then repair the code and run the relevant checks.
 ```
 
-The repository includes a synthetic, non-clinical join-check example:
+## Using reference code
+
+Give the reference material and the current goal together. The skill identifies what the example reads, returns, and depends on; maps those objects to the current project; reuses only the portable parts; and lists parameters that still need confirmation. It does not silently inherit the example's filters or biological interpretation.
+
+## Companion skills
+
+External skills are optional helpers that can be installed and called when a task needs them. They are not copied into this repository. See [references/skill-routing.md](references/skill-routing.md) for the source list and install templates. The project still owns its data definitions, object interfaces, parameters, and final checks.
+
+## Example request
+
+```text
+Adapt this Seurat script to the current sample metadata. Check the object type,
+cell IDs, package versions, and uncertain QC thresholds before running it.
+```
+
+Run the local checks with:
 
 ```bash
-Rscript examples/join-check/run_example.R
+./scripts/check_skill.sh
 ```
 
-See the [Chinese README](README.md) for trigger examples, safety boundaries, verification, and file structure.
+See the [Chinese README](README.md) for the full workflow, boundaries, and examples.
