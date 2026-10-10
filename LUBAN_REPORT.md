@@ -45,7 +45,7 @@
 ### 活体证据
 
 - 文档命令：`Rscript examples/join-check/run_example.R` 已实跑，退出码 0，输出 3 行且 `stay_id` 无重复。
-- 仓库检查：`./scripts/check_skill.sh` 已实跑，通过 JSON、R 回放和输出断言。
+- 仓库检查：`./scripts/check_skill.sh` 已实跑，通过 JSON、R 回放和输出断言；同一命令已加入 GitHub Actions smoke test。
 - 结构尺：Luban checker 从基线的 `6 PASS / 1 FAIL / 6 WARN` 变为 `12 PASS / 0 FAIL / 1 WARN`。
 - 本轮没有真实 MIMIC/eICU 数据可公开回放；合成 fixture 只验证连接粒度和失败停点，不证明任何临床定义。
 - 剩余警告：没有 GIF/视频；这是传播资产缺口，不影响脚本回放正确性。
@@ -75,7 +75,7 @@
 ### P1：补上后明显提升安装率/传播率
 
 - 为 2 个典型临床任务增加不含数据的输入/输出契约和失败码示例。
-- 加一条 GitHub Actions 检查 `scripts/check_skill.sh`，让 JSON 和合成回放每次提交都运行。
+- 已加入 GitHub Actions 检查 `scripts/check_skill.sh`，让 JSON 和合成回放每次提交都运行。
 - 用真实运行终端录制 GIF，并把录制脚本和产物一起入库。
 
 ### P2：锦上添花
@@ -165,7 +165,7 @@
 
 ### 3 天内完成
 
-- [ ] 增加 GitHub Actions smoke test。
+- [x] 增加 GitHub Actions smoke test。
 - [ ] 增加 2 个临床任务的无数据契约和失败码样例。
 - [ ] 录制可复现终端 GIF。
 
