@@ -46,6 +46,8 @@
 
 - 文档命令：`Rscript examples/join-check/run_example.R` 已实跑，退出码 0，输出 3 行且 `stay_id` 无重复。
 - 仓库检查：`./scripts/check_skill.sh` 已实跑，通过 JSON、R 回放和输出断言；同一命令已加入 GitHub Actions smoke test。
+- 公网安装：`npx skills add DaXuanGarden/daxuan-r-writing --skill daxuan-r-writing --agent codex --copy --yes` 已从 GitHub 克隆并安装到 Codex 项目目录。
+- 公网 CI：[Skill checks run 38022981751](https://github.com/DaXuanGarden/daxuan-r-writing/actions/runs/38022981751) 已成功完成；GitHub URL 结构检查为 `13 PASS / 0 FAIL / 1 WARN`。
 - 结构尺：Luban checker 从基线的 `6 PASS / 1 FAIL / 6 WARN` 变为 `12 PASS / 0 FAIL / 1 WARN`。
 - 本轮没有真实 MIMIC/eICU 数据可公开回放；合成 fixture 只验证连接粒度和失败停点，不证明任何临床定义。
 - 剩余警告：没有 GIF/视频；这是传播资产缺口，不影响脚本回放正确性。
@@ -161,7 +163,7 @@
 - [x] 冻结 v0.2.0 基线。
 - [x] 补公开发布资产和合成回放。
 - [x] 跑结构检查、JSON 检查和 R 回放。
-- [ ] 将当前提交推送到 GitHub 新仓库。
+- [x] 将当前提交推送到 GitHub 新仓库。
 
 ### 3 天内完成
 
