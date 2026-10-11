@@ -24,7 +24,8 @@
     "reproducible synthetic example",
     "public README install path",
     "external skill routing manifest",
-    "data-domain and reference-code adaptation guidance"
+    "data-domain and reference-code adaptation guidance",
+    "README concept map and workflow diagram"
   ],
   "supported_data_domains": [
     "clinical tables and event data",

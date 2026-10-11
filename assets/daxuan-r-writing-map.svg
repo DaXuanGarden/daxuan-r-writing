@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="820" viewBox="0 0 1400 820" role="img" aria-labelledby="title desc">
+  <title id="title">Daxuan R writing concept map</title>
+  <desc id="desc">A diagram showing user materials entering the Daxuan R writing adaptation layer and becoming explainable, runnable, reviewable R outputs.</desc>
+  <rect width="1400" height="820" fill="#f7f8fb"/>
+  <rect x="44" y="38" width="1312" height="744" rx="24" fill="#ffffff" stroke="#d8dee9" stroke-width="2"/>
+
+  <text x="90" y="106" fill="#172033" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="34" font-weight="700">Daxuan R writing</text>
+  <text x="90" y="145" fill="#526174" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="19">把参考材料变成当前项目真正能用的 R 代码</text>
+
+  <rect x="90" y="200" width="320" height="250" rx="16" fill="#eef4ff" stroke="#9db8ef" stroke-width="2"/>
+  <text x="122" y="246" fill="#1e3a8a" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="23" font-weight="700">用户材料</text>
+  <text x="122" y="288" fill="#26364f" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="18">脚本 · 函数 · notebook</text>
+  <text x="122" y="321" fill="#26364f" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="18">输入文件 · 报错信息</text>
+  <text x="122" y="354" fill="#26364f" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="18">对象 · 参数 · 目标</text>
+  <line x1="122" y1="389" x2="378" y2="389" stroke="#9db8ef" stroke-width="2"/>
+  <text x="122" y="422" fill="#526174" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16">先读懂材料，再动手改代码</text>
+
+  <path d="M430 324 H510" fill="none" stroke="#64748b" stroke-width="3"/>
+  <path d="M497 313 L516 324 L497 335" fill="none" stroke="#64748b" stroke-width="3"/>
+
+  <rect x="530" y="176" width="340" height="300" rx="16" fill="#effaf7" stroke="#83c7b7" stroke-width="2"/>
+  <text x="566" y="224" fill="#115e59" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="23" font-weight="700">适配层</text>
+  <text x="566" y="267" fill="#263b3a" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="18">认对象：表 · 矩阵 · Seurat</text>
+  <text x="566" y="300" fill="#263b3a" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="18">认接口：ID · 维度 · 时间</text>
+  <text x="566" y="333" fill="#263b3a" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="18">认差异：可复用 · 待确认</text>
+  <text x="566" y="366" fill="#263b3a" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="18">选助手：按需要调用</text>
+  <line x1="566" y1="397" x2="834" y2="397" stroke="#83c7b7" stroke-width="2"/>
+  <text x="566" y="432" fill="#526174" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16">不把示例假设变成项目结论</text>
+
+  <path d="M890 324 H970" fill="none" stroke="#64748b" stroke-width="3"/>
+  <path d="M957 313 L976 324 L957 335" fill="none" stroke="#64748b" stroke-width="3"/>
+
+  <rect x="990" y="200" width="320" height="250" rx="16" fill="#fff5eb" stroke="#f0b47c" stroke-width="2"/>
+  <text x="1022" y="246" fill="#9a3412" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="23" font-weight="700">项目结果</text>
+  <text x="1022" y="288" fill="#4a3024" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="18">能运行的 R 脚本</text>
+  <text x="1022" y="321" fill="#4a3024" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="18">清楚的假设和输出</text>
+  <text x="1022" y="354" fill="#4a3024" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="18">针对性的结果检查</text>
+  <line x1="1022" y1="389" x2="1278" y2="389" stroke="#f0b47c" stroke-width="2"/>
+  <text x="1022" y="422" fill="#526174" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16">知道做了什么，也知道没验证什么</text>
+
+  <text x="90" y="544" fill="#172033" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="21" font-weight="700">同一套适配方式，覆盖不同材料</text>
+  <rect x="90" y="580" width="214" height="92" rx="12" fill="#f1f5f9"/>
+  <text x="197" y="618" text-anchor="middle" fill="#334155" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="18" font-weight="600">临床表格</text>
+  <text x="197" y="647" text-anchor="middle" fill="#64748b" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15">表关系 · 事件时间</text>
+  <rect x="328" y="580" width="214" height="92" rx="12" fill="#f1f5f9"/>
+  <text x="435" y="618" text-anchor="middle" fill="#334155" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="18" font-weight="600">GWAS / 遗传学</text>
+  <text x="435" y="647" text-anchor="middle" fill="#64748b" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15">variant · allele · result</text>
+  <rect x="566" y="580" width="214" height="92" rx="12" fill="#f1f5f9"/>
+  <text x="673" y="618" text-anchor="middle" fill="#334155" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="18" font-weight="600">bulk 组学</text>
+  <text x="673" y="647" text-anchor="middle" fill="#64748b" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15">样本 × 特征矩阵</text>
+  <rect x="804" y="580" width="214" height="92" rx="12" fill="#f1f5f9"/>
+  <text x="911" y="618" text-anchor="middle" fill="#334155" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="18" font-weight="600">单细胞 / 空间</text>
+  <text x="911" y="647" text-anchor="middle" fill="#64748b" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15">cell · spot · object</text>
+  <rect x="1042" y="580" width="268" height="92" rx="12" fill="#f1f5f9"/>
+  <text x="1176" y="618" text-anchor="middle" fill="#334155" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="18" font-weight="600">多组学 / 其他 R 材料</text>
+  <text x="1176" y="647" text-anchor="middle" fill="#64748b" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15">按项目接口接入</text>
+
+  <text x="90" y="731" fill="#64748b" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16">外部 skill 提供局部帮助；对象含义、项目参数和最终判断始终留在当前项目。</text>
+</svg>

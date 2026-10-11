@@ -20,6 +20,24 @@
 
 `daxuan-r-writing` 是一个 R 实现层。它不假定用户一定使用临床表格、GWAS 或某一个分析框架，而是先理解当前材料，再把合适的代码写进当前项目。它可以处理临床、GWAS、bulk 组学、单细胞、空间组学、多组学，以及用户提供的其他 R 脚本或 notebook。
 
+![Daxuan R writing concept map](assets/daxuan-r-writing-map.svg)
+
+## 一眼看懂
+
+```mermaid
+flowchart LR
+    A[用户材料\n脚本 · 对象 · 数据 · 目标] --> B[理解当前项目\n对象 · ID · 依赖 · 输出]
+    B --> C{哪些内容可以复用？}
+    C -->|R 写法和结构| D[改写成项目代码]
+    C -->|阈值和领域判断| E[列为待确认事项]
+    D --> F[运行相关检查]
+    E --> G[用户或项目文档确认]
+    G --> D
+    F --> H[脚本 + 输出 + 假设 + 未验证项]
+```
+
+图的重点是中间这一步：skill 不把外部代码整段搬过来，而是把可以迁移的写法接到当前项目。
+
 ## 我们的做法
 
 ### 1. 先看手头的材料
@@ -120,6 +138,7 @@ SKILL.md                         Agent 工作方式和边界
 agents/interface.yaml            跨 runtime 的调用提示
 references/script-template.md    独立 R 脚本骨架
 references/skill-routing.md      外部助手来源和数据域适配说明
+assets/daxuan-r-writing-map.svg  skill 理念概念图
 examples/join-check/             合成连接示例
 scripts/check_skill.sh           本地验证脚本
 evals/trigger_cases.json         触发和近邻样例

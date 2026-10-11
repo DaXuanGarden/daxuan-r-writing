@@ -10,6 +10,7 @@ required_files=(
   "$ROOT/evals/trigger_cases.json"
   "$ROOT/references/script-template.md"
   "$ROOT/references/skill-routing.md"
+  "$ROOT/assets/daxuan-r-writing-map.svg"
   "$ROOT/examples/join-check/run_example.R"
 )
 
@@ -43,7 +44,10 @@ skill = skill_path.read_text(encoding="utf-8")
 assert "外部助手怎么参与" in skill
 assert "参考材料怎样变成新代码" in skill
 assert "参考代码" in routing and "数据域适配" in routing
-assert "外部助手" in readme_path.read_text(encoding="utf-8")
+readme = readme_path.read_text(encoding="utf-8")
+assert "外部助手" in readme
+assert "assets/daxuan-r-writing-map.svg" in readme
+assert "flowchart LR" in readme
 print(f"PASS: {len(names)} integrated skill routes, {len(domains)} data domains, and documentation checks")
 PY
 

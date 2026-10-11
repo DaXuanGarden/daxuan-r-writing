@@ -4,6 +4,10 @@
 
 `daxuan-r-writing` is an R implementation layer for clinical data, GWAS, bulk omics, single-cell, spatial omics, multi-omics, and other user-provided R workflows. It starts from the files, objects, scripts, and goals in front of it instead of assuming one analysis framework.
 
+![Daxuan R writing concept map](assets/daxuan-r-writing-map.svg)
+
+The central move is adaptation: identify what can travel from the reference code, keep project-specific meaning in place, and return code with evidence about what actually ran.
+
 ## What makes it ours
 
 - It learns from the user's scripts, functions, notebooks, examples, and error messages.
