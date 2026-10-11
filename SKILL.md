@@ -5,7 +5,7 @@ description: >-
   触发词包括“帮我写/修复/整理/运行 R 代码”“检查数据合并”“数据清洗/审计”“处理临床数据”“整理 GWAS/转录组/蛋白组/代谢组结果”“单细胞/Seurat/SingleCellExperiment 分析”“空间组学或多组学整合”“画出版级 ggplot2 图”“按审稿意见改图”“完成基线或回归分析”。纯 R 绘图也可触发本 skill，但应路由到 ggplot2-pub，而不是在本 skill 中重复实现绘图规范。
 metadata:
   author: Daxuan
-  version: "0.6.0"
+  version: "0.6.1"
 ---
 
 # Daxuan R writing

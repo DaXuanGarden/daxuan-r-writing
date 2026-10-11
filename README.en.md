@@ -2,11 +2,20 @@
 
 > Turn reference R code into code that belongs in the current project.
 
-`daxuan-r-writing` is an R implementation layer for clinical data, GWAS, bulk omics, single-cell, spatial omics, multi-omics, and other user-provided R workflows. It starts from the files, objects, scripts, and goals in front of it instead of assuming one analysis framework.
+`daxuan-r-writing` is an R adaptation layer organized around the current project's context. It supports clinical data, GWAS, bulk omics, single-cell, spatial omics, multi-omics, and other user-provided R workflows without assuming one analysis framework.
 
 ![Daxuan R writing concept map](assets/daxuan-r-writing-map.svg)
 
 The central move is adaptation: identify what can travel from the reference code, keep project-specific meaning in place, and return code with evidence about what actually ran.
+
+## What the handoff contains
+
+| Starting material | First questions | Result |
+|---|---|---|
+| Script, function, or notebook | What does it depend on and return? | Project-ready R code |
+| Table, matrix, or object | What do IDs, dimensions, and directions mean? | A compatible transformation |
+| Error, odd plot, or duplicated result | Where did the behavior change? | A focused fix and check |
+| Research goal and reference implementation | Which parts are code and which are assumptions? | Confirmed parts and open boundaries |
 
 ## What makes it ours
 

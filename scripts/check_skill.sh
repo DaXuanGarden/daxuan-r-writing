@@ -21,12 +21,13 @@ done
 python3 -m json.tool "$ROOT/manifest.json" >/dev/null
 python3 -m json.tool "$ROOT/evals/trigger_cases.json" >/dev/null
 
-python3 - "$ROOT/manifest.json" "$ROOT/references/skill-routing.md" "$ROOT/SKILL.md" "$ROOT/README.md" <<'PY'
+python3 - "$ROOT/manifest.json" "$ROOT/references/skill-routing.md" "$ROOT/SKILL.md" "$ROOT/README.md" "$ROOT/assets/daxuan-r-writing-map.svg" <<'PY'
 import json
 import sys
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
-manifest_path, routing_path, skill_path, readme_path = map(Path, sys.argv[1:])
+manifest_path, routing_path, skill_path, readme_path, svg_path = map(Path, sys.argv[1:])
 manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
 skills = manifest.get("integrated_skills")
 assert isinstance(skills, list) and skills, "integrated_skills must be a non-empty list"
@@ -48,6 +49,9 @@ readme = readme_path.read_text(encoding="utf-8")
 assert "外部助手" in readme
 assert "assets/daxuan-r-writing-map.svg" in readme
 assert "flowchart LR" in readme
+svg_root = ET.parse(svg_path).getroot()
+assert svg_root.tag.endswith("svg") and svg_root.get("role") == "img"
+assert svg_root.find("{http://www.w3.org/2000/svg}title") is not None
 print(f"PASS: {len(names)} integrated skill routes, {len(domains)} data domains, and documentation checks")
 PY
 
